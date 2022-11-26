@@ -6,22 +6,22 @@ public class MainPage {
 
     private By orderButtonUp = By.xpath(".//button[@class='Button_Button__ra12g']"); //кнопка заказать наверху
     private By fqaHeader = By.xpath("//div[@class='Home_SubHeader__zwi_E'][text()='Вопросы о важном']"); // хэдер Вопросы о важном
-    private By firstQuestion = By.id("accordion__heading-0"); //первый вопрос
-    private By firstAnswer = By.xpath("//div[@id='accordion__panel-0']/p"); // первый ответ и там дальше по аналогии
-    private By secondQuestion = By.id("accordion__heading-1");
-    private By secondAnswer = By.xpath("//div[@id='accordion__panel-1']/p");
-    private By thirdQuestion = By.id("accordion__heading-2");
-    private By thirdAnswer = By.xpath("//div[@id='accordion__panel-2']/p");
-    private By fourthQuestion = By.id("accordion__heading-3");
-    private By fourthAnswer = By.xpath("//div[@id='accordion__panel-3']/p");
-    private By fifthQuestion = By.id("accordion__heading-4");
-    private By fifthAnswer = By.xpath("//div[@id='accordion__panel-4']/p");
-    private By sixthQuestion = By.id("accordion__heading-5");
-    private By sixAnswer = By.xpath("//div[@id='accordion__panel-5']/p");
-    private By seventhQuestion = By.id("accordion__heading-6");
-    private By seventhAnswer = By.xpath("//div[@id='accordion__panel-6']/p");
-    private By eighthQuestion = By.id("accordion__heading-7");
-    private By eighthAnswer = By.xpath("//div[@id='accordion__panel-7']/p");
+    private By priceQuestion = By.id("accordion__heading-0"); //первый вопрос
+    public By priceAnswer = By.xpath("//div[@id='accordion__panel-0']/p"); // первый ответ и там дальше по аналогии
+    private By scooterCountQuestion = By.id("accordion__heading-1");
+    private By scooterCountAnswer = By.xpath("//div[@id='accordion__panel-1']/p");
+    private By arendaTimeQuestion = By.id("accordion__heading-2");
+    private By arendaTimeAnswer = By.xpath("//div[@id='accordion__panel-2']/p");
+    private By arendaTodayQuestion = By.id("accordion__heading-3");
+    private By arendaTodayAnswer = By.xpath("//div[@id='accordion__panel-3']/p");
+    private By extendOrderQuestion = By.id("accordion__heading-4");
+    private By extendOrderAnswer = By.xpath("//div[@id='accordion__panel-4']/p");
+    private By aboutChargeQuestion = By.id("accordion__heading-5");
+    private By aboutChargeAnswer = By.xpath("//div[@id='accordion__panel-5']/p");
+    private By cancelOrderQuestion = By.id("accordion__heading-6");
+    private By cancelOrderAnswer = By.xpath("//div[@id='accordion__panel-6']/p");
+    private By MKADQuestion = By.id("accordion__heading-7");
+    private By MKADAnswer = By.xpath("//div[@id='accordion__panel-7']/p");
 
     private By cookieButton = By.className("App_CookieButton__3cvqF"); //кнопка принятия кук
     private By orderButtonDown = By.xpath("//div[@class='Home_FinishButton__1_cWm']"); //кнопка заказать внизу
@@ -35,6 +35,7 @@ public class MainPage {
     public void scrollToFooter() {
         WebElement element = driver.findElement(fqaHeader);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        waitForElementOnTheMainPage(fqaHeader);
     }
     //метод для принятия кук
     public void acceptCookie() {
@@ -42,70 +43,68 @@ public class MainPage {
     }
 
     //метод для клика на первый вопрос
-    public void clickOnTheFirstQuestion() {
-        driver.findElement(firstQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(firstAnswer));
+    public void clickOnThePriceQuestion() {
+        driver.findElement(priceQuestion).click();
+        waitForElementOnTheMainPage(priceAnswer);
     }
     //получили ответ на первый вопрос
-    public String getTextOnTheFirstQuestion() {
-        return driver.findElement(firstAnswer).getText();
+    public String getTextForPriceQuestion() {
+        return driver.findElement(priceAnswer).getText();
     }
-    public void clickOnTheSecondQuestion() {
-        driver.findElement(secondQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(secondAnswer));
+
+    public void clickOnTheScooterCountQuestion() {
+        driver.findElement(scooterCountQuestion).click();
+        waitForElementOnTheMainPage(scooterCountAnswer);
     }
-    public String getTextOnTheSecondQuestion() {
-        return driver.findElement(secondAnswer).getText();
+    public String getTextOnTheScooterCountQuestion() {
+        return driver.findElement(scooterCountAnswer).getText();
     }
-    public void clickOnTheThirdQuestion(){
-        driver.findElement(thirdQuestion).click();
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfElementLocated(thirdAnswer));
+
+    public void clickOnTheArendaTimeQuestion(){
+        driver.findElement(arendaTimeQuestion).click();
+        waitForElementOnTheMainPage(arendaTimeAnswer);
     }
-    public String getTextOnTheThirdQuestion(){
-        return driver.findElement(thirdAnswer).getText();
+    public String getTextOnTheArendaTimeQuestion(){
+        return driver.findElement(arendaTimeAnswer).getText();
     }
-    public void clickOnTheFourthQuestion(){
-        driver.findElement(fourthQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(fourthAnswer));
+    public void clickOnTheArendaTodayQuestion(){
+        driver.findElement(arendaTodayQuestion).click();
+        waitForElementOnTheMainPage(arendaTodayAnswer);
     }
-    public String getTextOnTheFourthQuestion(){
-        return driver.findElement(fourthAnswer).getText();
+    public String getTextOnTheArendaTodayQuestion(){
+        return driver.findElement(arendaTodayAnswer).getText();
     }
-    public void clickOnTheFifthQuestion(){
-        driver.findElement(fifthQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(fifthAnswer));
+
+    public void clickOnTheExtendOrderQuestion(){
+        driver.findElement(extendOrderQuestion).click();
+        waitForElementOnTheMainPage(extendOrderAnswer);
     }
-    public String getTextOnTheFifthQuestion(){
-        return driver.findElement(fifthAnswer).getText();
+    public String getTextOnTheExtendOrderQuestion(){
+        return driver.findElement(extendOrderAnswer).getText();
     }
-    public void clickOnTheSixthQuestion(){
-        driver.findElement(sixthQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(sixAnswer));
+
+    public void clickOnTheAboutChargeQuestion(){
+        driver.findElement(aboutChargeQuestion).click();
+        waitForElementOnTheMainPage(aboutChargeAnswer);
     }
-    public String getTextOnTheSixthQuestion(){
-        return driver.findElement(sixAnswer).getText();
+    public String getTextOnTheAboutChargeQuestion(){
+        return driver.findElement(aboutChargeAnswer).getText();
     }
-    public void clickOnTheSevenQuestion(){
-        driver.findElement(seventhQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(seventhAnswer));
+
+    public void clickOnTheCancelOrderQuestion(){
+        driver.findElement(cancelOrderQuestion).click();
+        waitForElementOnTheMainPage(cancelOrderAnswer);
     }
-    public String getTextOnTheSevenQuestion(){
-        return driver.findElement(seventhAnswer).getText();
+    public String getTextOnTheCancelOrderQuestion(){
+        return driver.findElement(cancelOrderAnswer).getText();
     }
-    public void clickOnTheEighthQuestion(){
-        driver.findElement(eighthQuestion).click();
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(eighthAnswer));
+
+    public void clickOnTheMKADQuestion(){
+        driver.findElement(MKADQuestion).click();
+        waitForElementOnTheMainPage(MKADAnswer);
     }
     public String getTextOnTheEighthQuestion(){
-        return driver.findElement(eighthAnswer).getText();
+        return driver.findElement(MKADAnswer).getText();
     }
 
     //метод для нажатия кнопки заказать наверху
@@ -116,5 +115,11 @@ public class MainPage {
         WebElement element = driver.findElement(orderButtonDown);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
         element.click();
+    }
+    //метод для ожидания
+    public boolean waitForElementOnTheMainPage(By element){
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(element));
+        return true;
     }
 }

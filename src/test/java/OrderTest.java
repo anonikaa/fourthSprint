@@ -3,10 +3,9 @@ import org.junit.Test;
 import static data.DataTest.*;
 
 
-public class OrderTest extends BaseUrlTest {
+public class OrderTest extends BaseTest {
     @Test
     public void orderFromUpButtonTest() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage mainPage = new MainPage(driver);
         mainPage.acceptCookie();
         mainPage.clickOnOrderButtonUp();
@@ -26,17 +25,11 @@ public class OrderTest extends BaseUrlTest {
 }
     @Test
     public void orderFromDownButtonTest(){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage mainPage = new MainPage(driver);
         mainPage.acceptCookie();
         mainPage.clickOrderButtonDown();
         OrderPage orderPage = new OrderPage(driver);
         orderPage.isThisOrderPage();
         orderPage.doSuccessOrder();
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
     }
 }

@@ -3,15 +3,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 
-public class BaseUrlTest {
+public class BaseTest {
     protected WebDriver driver;
     @Before
     public void before() {
         driver = getDriver("chrome");
+        driver.get("https://qa-scooter.praktikum-services.ru/");
+
     } //фаерфокс у меня так и не завёлся
     private WebDriver getDriver(String browserName){
         if ("chrome".equals(browserName)) {
@@ -20,6 +21,10 @@ public class BaseUrlTest {
     } else{
         return driver = new SafariDriver();
         }
+    }
+    @After
+    public void teardown() {
+        driver.quit();
     }
 
 }

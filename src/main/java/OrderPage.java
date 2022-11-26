@@ -29,7 +29,7 @@ public class OrderPage {
     private By dateArenda = By.className("Dropdown-placeholder");
     private By dateArendaDropdown = By.xpath("//div[@class='Dropdown-option'][contains(text(), 'сутки')]");
     private By orderButton = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][contains(text(), 'Заказать')]");
-    private By yesButton = By.xpath("//div[@class='Order_Modal__YZ-d3']//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    private By yesButton = By.xpath("//div[@class='Order_Modal__YZ-d3']//button[contains(text(), 'Да')]");
     private By successOrderModal = By.className("Order_ModalHeader__3FDaJ");
 
 
